@@ -1,5 +1,4 @@
-Src/main.o: ../Src/main.c ../Inc/Helpers/logger.h ../Inc/usbd_framework.h \
- ../Inc/usbd_driver.h \
+Src/usbd_driver.o: ../Src/usbd_driver.c ../Inc/usbd_driver.h \
  C:/Users/young-sun.Kim/USB_Guide/USB_Device/Inc/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
  C:/Users/young-sun.Kim/USB_Guide/USB_Device/Inc/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
  C:/Users/young-sun.Kim/USB_Guide/USB_Device/Inc/CMSIS/Include/core_cm4.h \
@@ -9,10 +8,6 @@ Src/main.o: ../Src/main.c ../Inc/Helpers/logger.h ../Inc/usbd_framework.h \
  C:/Users/young-sun.Kim/USB_Guide/USB_Device/Inc/CMSIS/Include/mpu_armv7.h \
  C:/Users/young-sun.Kim/USB_Guide/USB_Device/Inc/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
  C:/Users/young-sun.Kim/USB_Guide/USB_Device/Inc/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h
-
-../Inc/Helpers/logger.h:
-
-../Inc/usbd_framework.h:
 
 ../Inc/usbd_driver.h:
 

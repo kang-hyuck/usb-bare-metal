@@ -7,7 +7,7 @@ void initialize_gpio_pins()
 	SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIOBEN);  // Set GPIOBEN Region
 
 	/* Select AFR(alternate function register) GPIOB14(OTG D-), GPIOB15(OTG D+) */
-	MODIFY_REG(GPIO->AFR[1],   // AFR[1]:High,  AFR[0]:LOW
+	MODIFY_REG(GPIOB->AFR[1],   // AFR[1]:High,  AFR[0]:LOW
 			GPIO_AFRH_AFSEL14 | GPIO_AFRH_AFSEL15,   // Clear this region (Mask Bits)
 			_VAL2FLD(GPIO_AFRH_AFSEL14, 0xC) | _VAL2FLD(GPIO_AFRH_AFSEL15, 0xC)
 	);
@@ -53,4 +53,24 @@ void initialize_core()
 	/* Unmasks "USB global interrupt" which will activate all unmasked interrupts */
 	SET_BIT(USB_OTG_HS->GAHBCFG, USB_OTG_GAHBCFG_GINT);
 }
+
+void connect()
+{
+	/* 1:Power down deactivated (PHY Full-speed mode) */
+	SET_BIT(USB_OTG_HS->GCCFG, USB_OTG_GCCFG_PWRDWN);
+
+	/* Connect the device to the bus */
+	CLEAR_BIT(USB_OTG_HS_DEVICE->DCTL, USB_OTG_DCTL_SDIS);
+}
+
+void disconnect()
+{
+	/* Disconnect the device from the bus */
+	SET_BIT(USB_OTG_HS_DEVICE->DCTL, USB_OTG_DCTL_SDIS);
+
+	/* 0:Power down active (PHY Full-speed mode) */
+	CLEAR_BIT(USB_OTG_HS->GCCFG, USB_OTG_GCCFG_PWRDWN);
+
+}
+
 
